@@ -58,8 +58,8 @@ app.post('/register', (req, res) => {
 
     // Consulta SQL para insertar el usuario
     const query = `
-        INSERT INTO users (first_name, last_name, team, age, email, phone, createdAt, updatedAt)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO users (first_name, last_name, team, age, email, phone)
+        VALUES (?, ?, ?, ?, ?, ?)
     `;
 
     // Ejecutar la consulta
