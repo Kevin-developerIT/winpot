@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const db = require('./db'); // Asegúrate de que la ruta sea correcta
 const nodemailer = require('nodemailer');
 const app = express();
+console.log(req.body);
+
 const PORT = process.env.PORT || 3001;
 
 const cors = require('cors');
