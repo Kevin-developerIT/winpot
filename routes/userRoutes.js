@@ -13,7 +13,7 @@ router.post('/register', (req, res) => {
     }
 
     // Consulta para insertar un nuevo usuario en la base de datos
-    const sql = 'INSERT INTO users (first_name, last_name, team, age, email, phone) VALUES (?, ?, ?)';
+    const sql = 'INSERT INTO Users (first_name, last_name, team, age, email, phone) VALUES (?, ?, ?)';
 
     // Ejecutar la consulta con los valores del formulario
     db.query(sql, [first_name, last_name, team, age, email, phone], (err, result) => {
