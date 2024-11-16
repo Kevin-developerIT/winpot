@@ -53,14 +53,17 @@ app.post('/register', (req, res) => {
         return res.status(400).json({ error: 'La edad debe ser un número positivo.' });
     }
 
+    // Obtener la fecha actual para los campos `createdAt` y `updatedAt`
+    const currentDate = new Date().toISOString();
+
     // Consulta SQL para insertar el usuario
     const query = `
-        INSERT INTO users (first_name, last_name, team, age, email, phone)
-        VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO users (first_name, last_name, team, age, email, phone, createdAt, updatedAt)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     // Ejecutar la consulta
-    db.query(query, [first_name, last_name, team, age, email, phone], (err, result) => {
+    db.query(query, [first_name, last_name, team, age, email, phone, currentDate, currentDate], (err, result) => {
         if (err) {
             console.error('Error al registrar el usuario:', err);
             return res.status(500).json({ error: 'Error al registrar el usuario.' });
