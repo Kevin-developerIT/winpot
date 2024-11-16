@@ -1,16 +1,22 @@
-require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const userRoutes = require('./routes/userRoutes');
+const dotenv = require('dotenv');
+const userRouters = require('./userRouters'); // Importamos el archivo de rutas
 
+// Cargar variables de entorno desde .env
+dotenv.config();
+
+// Crear una aplicación Express
 const app = express();
 
-// Middleware
+// Usar middleware para manejar datos en formato JSON
 app.use(bodyParser.json());
 
-// Routes
-app.use('/api/users', userRoutes);
+// Usar el router de usuarios para las rutas relacionadas con el registro
+app.use('/api/users', userRouters);
 
-// Start server
+// Iniciar el servidor
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
