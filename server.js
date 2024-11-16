@@ -9,8 +9,6 @@ const PORT = process.env.PORT || 3001;
 
 // Configuración de CORS
 app.use(cors());
-// O, si prefieres permitir solo un origen específico, haz esto:
-
 
 // Configuración del transporte de correo
 const transporter = nodemailer.createTransport({
@@ -39,9 +37,20 @@ app.use(bodyParser.json());
 app.post('/register', (req, res) => {
     const { first_name, last_name, team, age, email, phone } = req.body;
 
-    // Validar que todos los campos estén presentes
+    // Validar que todos los campos estén presentes y tengan el formato correcto
     if (!first_name || !last_name || !team || !age || !email || !phone) {
-        return res.status(400).send('Todos los campos son obligatorios.');
+        return res.status(400).json({ error: 'Todos los campos son obligatorios.' });
+    }
+
+    // Validar formato de email
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ error: 'El correo electrónico no es válido.' });
+    }
+
+    // Validar que la edad sea un número
+    if (isNaN(age) || age <= 0) {
+        return res.status(400).json({ error: 'La edad debe ser un número positivo.' });
     }
 
     // Consulta SQL para insertar el usuario
@@ -51,10 +60,10 @@ app.post('/register', (req, res) => {
     `;
 
     // Ejecutar la consulta
-    db.query(query, [first_name, last_name, team, age, email, phone], (err) => {
+    db.query(query, [first_name, last_name, team, age, email, phone], (err, result) => {
         if (err) {
             console.error('Error al registrar el usuario:', err);
-            return res.status(500).send('Error al registrar el usuario.');
+            return res.status(500).json({ error: 'Error al registrar el usuario.' });
         }
 
         // Configuración del correo de confirmación
@@ -81,10 +90,10 @@ app.post('/register', (req, res) => {
         transporter.sendMail(mailOptions, (error) => {
             if (error) {
                 console.error('Error al enviar el correo:', error);
-                return res.status(500).send('Error al enviar el correo de confirmación.');
+                return res.status(500).json({ error: 'Error al enviar el correo de confirmación.' });
             }
 
-            res.status(200).send('Registro exitoso y correo enviado.');
+            res.status(200).json({ message: 'Registro exitoso y correo enviado.' });
         });
     });
 });
