@@ -43,16 +43,16 @@ app.use(bodyParser.json()); // Para analizar JSON en el cuerpo de la solicitud
 
 // Endpoint para registrar usuarios
 app.post('/register', (req, res) => {
-    const { nombre, apellido, correo } = req.body;
+    const { first_name, last_name, team, age, email, phone } = req.body;
 
     // Verificar que todos los campos estén presentes
-    if (!nombre || !apellido || !correo) {
+    if (!first_name || !last_name || !team || !age || !email || !phone ) {
         return res.status(400).send('Todos los campos son obligatorios.');
     }
 
-    const query = 'INSERT INTO users (nombre, apellido, correo) VALUES (?, ?, ?)';
+    const query = 'INSERT INTO users (first_name, last_name, team, age, email, phone) VALUES (?, ?, ?)';
 
-    db.query(query, [nombre, apellido, correo], (err) => {
+    db.query(query, [first_name, last_name, team, age, email, phone], (err) => {
         if (err) {
             console.error('Error al registrar el usuario:', err);
             return res.status(500).send('Error al registrar el usuario.');
@@ -65,7 +65,7 @@ app.post('/register', (req, res) => {
             subject: 'Confirmación de registro - WINPOT',
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
-            <h2 style="text-align: center; color: #333;">¡Gracias por registrarte, ${nombre}!</h2>
+            <h2 style="text-align: center; color: #333;">¡Gracias por registrarte, ${first_name}!</h2>
             <p style="color: #555;">Tu registro ha sido exitoso. Apreciamos que te hayas unido a nosotros.</p>
 
             <!-- Imagen del evento -->
