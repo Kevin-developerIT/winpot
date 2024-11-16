@@ -1,18 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const userRouters = require('./userRouters'); // Importar desde la raíz
+const userRouters = require('./userRouters'); // Importar las rutas de usuario
 
-// Cargar variables de entorno desde .env
+// Cargar las variables de entorno
 dotenv.config();
 
-// Crear una aplicación Express
 const app = express();
 
-// Usar middleware para manejar datos en formato JSON
+// Middleware para manejar datos JSON
 app.use(bodyParser.json());
 
-// Usar el router de usuarios para las rutas relacionadas con el registro
+// Rutas
 app.use('/api/users', userRouters);
 
 // Iniciar el servidor
