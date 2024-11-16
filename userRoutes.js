@@ -8,7 +8,7 @@ const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
 });
 
 db.connect((err) => {
@@ -23,7 +23,6 @@ db.connect((err) => {
 router.post('/register', (req, res) => {
   const { firstName, lastName, team, age, email, phone } = req.body;
 
-  // Inserción en la base de datos
   const query = 'INSERT INTO users (first_name, last_name, team, age, email, phone) VALUES (?, ?, ?, ?, ?, ?)';
   db.query(query, [firstName, lastName, team, age, email, phone], (err, result) => {
     if (err) {
@@ -36,15 +35,15 @@ router.post('/register', (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: 'Registro exitoso',
-      text: `Hola ${firstName}, gracias por registrarte en nuestro sistema. ¡Bienvenido!`
+      text: `Hola ${firstName}, gracias por registrarte en nuestro sistema. ¡Bienvenido!`,
     };
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
+        pass: process.env.EMAIL_PASS,
+      },
     });
 
     transporter.sendMail(mailOptions, (err, info) => {
@@ -59,5 +58,4 @@ router.post('/register', (req, res) => {
   });
 });
 
-// Exportar el router
 module.exports = router;
