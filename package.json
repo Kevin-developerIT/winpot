@@ -14,5 +14,9 @@
         "mysql2": "^3.11.4",
         "nodemailer": "^6.9.16",
         "sequelize": "^6.32.1"
-    }
+    },
+    "devDependencies": {},
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
