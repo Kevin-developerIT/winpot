@@ -10,9 +10,7 @@ const PORT = process.env.PORT || 3001;
 // Configuración de CORS
 app.use(cors());
 // O, si prefieres permitir solo un origen específico, haz esto:
-app.use(cors({
-    origin: 'https://registro-winpot.herogroup.global'
-}));
+
 
 // Configuración del transporte de correo
 const transporter = nodemailer.createTransport({
