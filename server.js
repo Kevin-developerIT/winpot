@@ -11,7 +11,7 @@ const cors = require('cors');
 app.use(cors());
 // O, si prefieres permitir solo un origen específico, haz esto:
 app.use(cors({
-    origin: 'https://registro-winpot.herogroup.global/'
+    origin: 'https://registro-winpot.herogroup.global'
 }));
 
 
