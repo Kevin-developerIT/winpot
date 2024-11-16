@@ -9,6 +9,10 @@ const cors = require('cors');
 
 // Permitir todas las solicitudes CORS (útil para desarrollo)
 app.use(cors());
+// O, si prefieres permitir solo un origen específico, haz esto:
+app.use(cors({
+    origin: 'https://registro-winpot.herogroup.global/'
+}));
 
 
 
