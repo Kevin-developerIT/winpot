@@ -2,11 +2,11 @@ const db = require('../db');
 
 // Registro de usuario
 exports.registerUser = (req, res) => {
-  const { first_name, last_name, email } = req.body;
+  const { firstName, lastName, team, age, email, phone } = req.body;
 
-  // Insertar en la base de datos
-  const query = 'INSERT INTO users (first_name, last_name, email) VALUES (?, ?, ?)';
-  db.query(query, [first_name, last_name, email], (err, result) => {
+ // Insertar en la base de datos
+ const query = 'INSERT INTO users (first_name, last_name, team, age, email, phone) VALUES (?, ?, ?, ?, ?, ?)';
+ db.query(query, [firstName, lastName, team, age, email, phone], (err, result) => {
     if (err) {
       res.status(500).send({ message: 'Error al registrar usuario' });
     } else {

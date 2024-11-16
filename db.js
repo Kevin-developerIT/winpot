@@ -2,11 +2,11 @@ const mysql = require('mysql');
 
 // Crear un pool de conexiones
 const pool = mysql.createPool({
-    host: '193.203.166.181',        // O la IP o URL de tu servidor de base de datos
-    user: 'u943042028_appreg',       // Usuario de la base de datos
-    password: 'Registro20.2522',  // Contraseña del usuario
-    database: 'u943042028_registrar', // Asegúrate de especificar la base de datos aquí
-    connectionLimit: 10       // Puedes ajustar este número
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+      
   });
 
 pool.getConnection((err, connection) => {

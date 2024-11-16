@@ -10,10 +10,6 @@ const cors = require('cors');
 // Permitir todas las solicitudes CORS (útil para desarrollo)
 app.use(cors());
 
-// O, si prefieres permitir solo un origen específico, haz esto:
-app.use(cors({
-    origin: 'https://coctel-cena-registro.hgroup.consulting'
-}));
 
 
 const transporter = nodemailer.createTransport({
@@ -21,8 +17,8 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-        user: 'contactoregistro2@gmail.com',
-        pass: 'fgpnsxaoamuffixq'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
     }
 });
 
@@ -60,7 +56,7 @@ app.post('/register', (req, res) => {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: correo,
-            subject: 'Confirmación de registro - Cena de celebración Fundación Alsea',
+            subject: 'Confirmación de registro - WINPOT',
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
             <h2 style="text-align: center; color: #333;">¡Gracias por registrarte, ${nombre}!</h2>
