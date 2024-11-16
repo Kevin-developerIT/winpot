@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const userRouters = require('./routes/userRouters');  // Correcta importación de la ruta
+const userRouters = require('/routes/userRouters');  // Correcta importación de la ruta
 
 // Cargar variables de entorno desde .env
 dotenv.config();
