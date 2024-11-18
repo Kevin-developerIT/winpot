@@ -84,7 +84,7 @@ app.post('/register', (req, res) => {
                     <p style="text-align: center;">
                         <a href="https://g.co/kgs/2ACZtBN" target="_blank" style="color: #007bff;">Ver en Google Maps</a>
                     </p>
-                    <p style="text-align: center; color: #777;">Saludos cordiales,<br/>El equipo Fundación Alsea</p>
+                    <p style="text-align: center; color: #777;">Saludos cordiales,<br/>El equipo WINPOT.MX</p>
                 </div>
             `,
         };
