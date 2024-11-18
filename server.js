@@ -78,11 +78,11 @@ app.post('/register', (req, res) => {
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
                     <h2 style="text-align: center; color: #333;">¡Gracias por registrarte, ${first_name}!</h2>
                     <p style="color: #555;">Tu registro ha sido exitoso. Apreciamos que te hayas unido a nosotros.</p>
-                    <img src="https://hgroup.consulting/wp-content/uploads/2024/10/invitacion.jpg" alt="Imagen del evento" style="width: 100%; height: auto; border-radius: 5px;">
+                    <img src="https://registro-winpot.herogroup.global/RegistroWinpotpc.png" alt="Imagen" style="width: 100%; height: auto; border-radius: 5px;">
                     <h3 style="text-align: center; color: #333;">Ubicación del encuentro</h3>
                     <p style="text-align: center; color: #555;">Consulta el siguiente enlace para la ubicación:</p>
                     <p style="text-align: center;">
-                        <a href="https://maps.app.goo.gl/1FcABA5NdDyUn1wh8" target="_blank" style="color: #007bff;">Ver en Google Maps</a>
+                        <a href="https://g.co/kgs/2ACZtBN" target="_blank" style="color: #007bff;">Ver en Google Maps</a>
                     </p>
                     <p style="text-align: center; color: #777;">Saludos cordiales,<br/>El equipo Fundación Alsea</p>
                 </div>
